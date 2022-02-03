@@ -1,4 +1,4 @@
-import { connect, disconnect } from "../../mongodb/config/db.config";
+import { connect, disconnect } from "../mongodb/config/db.config";
 import { EventsModel } from '../model';
 
 export class EventsRepository {

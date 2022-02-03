@@ -1,13 +1,13 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { EventsController } from '../controller';
+import { ProfileController } from '../controller';
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
 
-    const eventsController = new EventsController();
+    const profileController = new ProfileController();
     let result: any;
     const HEADERS = {'Content-Type': 'application/json'}
     try {
-        result = await eventsController.listEvents()
+        result = await profileController.findProfileById(req.params.profileId);
         result.statusCode = 200;
         
         context.res = {

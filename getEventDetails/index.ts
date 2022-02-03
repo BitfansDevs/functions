@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { EventDetailsController } from './controller';
+import { EventDetailsController } from '../controller';
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
 
@@ -8,7 +8,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const HEADERS = {'Content-Type': 'application/json'}
     try {
         result = await eventDetailsController.findEventDetailsByEventId(req.params.eventId);
-        console.log("eventId: ", req.params.eventId);
         result.statusCode = 200;
         
         context.res = {

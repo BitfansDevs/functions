@@ -1,1 +1,0 @@
-export { EventsModel } from './events.model'

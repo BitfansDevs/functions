@@ -1,1 +1,0 @@
-export { EventsRepository } from './events.repository'
