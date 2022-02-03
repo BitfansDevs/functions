@@ -1,9 +1,9 @@
 import { model, Schema, Model, Document } from 'mongoose';
 
 export interface IEventDetails extends Document {
-    eventDetailsId: String;
     eventId: String;
     description: String;
+    address: String;
     price: Number;
     currency: String;
     nftContractAddress: String;
@@ -14,9 +14,9 @@ export interface IEventDetails extends Document {
 }
 
 const EventDetailsSchema: Schema = new Schema({
-    eventDetailsId: { type: String, required: true },
     eventId: { type: String, required: true },
     description: { type: String, required: true },
+    address: { type: String, required: true },
     price: { type: Number, required: true },
     currency: { type: String, required: true },
     nftContractAddress: { type: String, required: true },
