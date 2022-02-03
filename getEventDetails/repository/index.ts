@@ -1,0 +1,1 @@
+export { EventDetailsRepository } from './eventDetails.repository'

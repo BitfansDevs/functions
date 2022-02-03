@@ -1,0 +1,1 @@
+export { EventDetailsController } from './eventsDetails.controller'

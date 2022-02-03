@@ -1,0 +1,1 @@
+export { EventDetailsService } from './eventDetails.service';
