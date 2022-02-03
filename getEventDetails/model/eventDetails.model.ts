@@ -7,6 +7,7 @@ export interface IEventDetails extends Document {
     price: Number;
     currency: String;
     nftContractAddress: String;
+    nftImageUrl: String;
     imageUrl: String;
     termsAndConditions: String;
     openDoorsTime: String;
@@ -20,6 +21,7 @@ const EventDetailsSchema: Schema = new Schema({
     price: { type: Number, required: true },
     currency: { type: String, required: true },
     nftContractAddress: { type: String, required: true },
+    nftImageUrl: { type: String, required: true },
     imageUrl: { type: String, required: true },
     termsAndConditions: { type: String, required: true },
     openDoorsTime: { type: String, required: true },
