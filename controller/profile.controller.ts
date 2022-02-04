@@ -8,11 +8,7 @@ export class ProfileController {
         this.profileService = new ProfileService();
     }
 
-    public async findProfileById(profileId: string) {
-        return await this.profileService.findProfileById(profileId);
-    }
-
-    public async createProfile(profile: any) {
-        return await this.profileService.createProfile(profile);
+    public async findProfileById(uid: string) {
+        return await this.profileService.findProfileById(uid);
     }
 }

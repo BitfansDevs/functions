@@ -5,9 +5,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "profile/{uid}",
       "methods": [
-        "get"
+        "post"
       ]
     },
     {
@@ -16,5 +15,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/getProfile/index.js"
+  "scriptFile": "../dist/signup/index.js"
 }

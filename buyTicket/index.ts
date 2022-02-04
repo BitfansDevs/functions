@@ -1,13 +1,13 @@
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { ProfileController } from '../controller';
+import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import { TicketController } from "../controller";
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
 
-    const profileController = new ProfileController();
+    const ticketController = new TicketController();
     let result: any;
     const HEADERS = {'Content-Type': 'application/json'}
     try {
-        result = await profileController.findProfileById(req.params.uid);
+        result = await ticketController.createTicket(req.body);
         result.statusCode = 200;
         
         context.res = {

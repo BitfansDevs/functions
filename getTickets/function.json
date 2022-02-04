@@ -5,7 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "profile/{uid}",
+      "route": "ticket/{uid}",
       "methods": [
         "get"
       ]
@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/getProfile/index.js"
+  "scriptFile": "../dist/getTickets/index.js"
 }

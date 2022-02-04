@@ -1,3 +1,4 @@
 export { EventDetailsRepository } from './eventDetails.repository';
 export { EventsRepository } from './events.repository';
-export { ProfileRepository } from './profile.repository';
+export { UserRepository } from './user.repository';
+export { TicketRepository } from './ticket.repository';

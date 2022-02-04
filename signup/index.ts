@@ -1,13 +1,24 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { ProfileController } from '../controller';
+import { SingupController } from '../controller';
+import { USER_EXISTS } from '../util/Error';
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
 
-    const profileController = new ProfileController();
+    const singupController = new SingupController();
     let result: any;
     const HEADERS = {'Content-Type': 'application/json'}
     try {
-        result = await profileController.findProfileById(req.params.uid);
+        result = await singupController.findUserById(req.body.uid);
+        if(result != null) {
+            context.res = {
+                status: 400,
+                body: {message: USER_EXISTS},
+                headers: HEADERS
+            };
+            return;
+        }
+
+        result = await singupController.createUser(req.body);
         result.statusCode = 200;
         
         context.res = {

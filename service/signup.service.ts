@@ -1,6 +1,6 @@
 import { UserRepository } from '../repository';
 
-export class ProfileService {
+export class SingupService {
 
     userRepository: UserRepository;
 
@@ -8,7 +8,11 @@ export class ProfileService {
         this.userRepository = new UserRepository();
     }
 
-    public async findProfileById(uid : string) {
+    public async createUser(user: any) {
+        return await this.userRepository.createUser(user);
+    }
+
+    public async findUserById(uid : string) {
         return await this.userRepository.findUserById(uid);
     }
 
