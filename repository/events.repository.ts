@@ -13,8 +13,41 @@ export class EventsRepository {
         return await EventsModel.create(event);
     }
 
-    async listEvents(): Promise<any> {
-        return await EventsModel.find({});
+    async listEventsByCategoryAndTitle(category: string, title: string): Promise<any> {
+
+        return await EventsModel.aggregate([
+            {
+                $lookup: {
+                    from: "categories",
+                    localField: "categoryId",
+                    foreignField: "_id",
+                    as: "category"
+                }
+            },
+            {
+                $project: {
+                    "categoryId": 0
+                }
+            },
+            {
+                $match: {
+                    $and: [
+                        {
+                            "category.category": {
+                                $regex: category,
+                                $options: 'i'
+                            }
+                        },
+                        {
+                            "title": {
+                                $regex: title,
+                                $options: 'i'
+                            }
+                        }
+                    ]
+                }
+            }
+        ]);
     }
 
 }

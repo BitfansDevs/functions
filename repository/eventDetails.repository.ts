@@ -14,7 +14,7 @@ export class EventDetailsRepository {
     }
 
     async findEventDetailsByEventId(eventId: string): Promise<any> {
-        return await EventDetailsModel.find({ eventId: eventId });
+        return await EventDetailsModel.find({ eventId: eventId }).populate('tickets').populate('payments');
     }
 
     async listEventDetails(): Promise<any> {

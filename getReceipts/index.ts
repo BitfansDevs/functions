@@ -1,13 +1,13 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { TicketController } from "../controller";
+import { ReceiptController } from "../controller";
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
 
-    const ticketController = new TicketController();
+    const receiptController = new ReceiptController();
     let result: any;
     const HEADERS = {'Content-Type': 'application/json'}
     try {
-        result = await ticketController.findTicketByUserId(req.params.uid)
+        result = await receiptController.findReceiptByUserIdAndStatus(req.params.uid, req.query.status)
         result.statusCode = 200;
         
         context.res = {

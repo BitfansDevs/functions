@@ -5,7 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "ticket/{uid}",
+      "route": "receipt/{uid}",
       "methods": [
         "get"
       ]
@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/getTickets/index.js"
+  "scriptFile": "../dist/getReceipts/index.js"
 }

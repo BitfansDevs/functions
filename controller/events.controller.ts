@@ -8,8 +8,8 @@ export class EventsController {
         this.eventsService = new EventsService();
     }
 
-    public async listEvents() {
-        return await this.eventsService.listEvents();
+    public async listEvents(query: any) {
+        return await this.eventsService.listEvents(query);
     }
 
     public async createEvent(task: any) {

@@ -7,7 +7,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     let result: any;
     const HEADERS = {'Content-Type': 'application/json'}
     try {
-        result = await eventsController.listEvents()
+        result = await eventsController.listEvents(req.query)
         result.statusCode = 200;
         
         context.res = {
