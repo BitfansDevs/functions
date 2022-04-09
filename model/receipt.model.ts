@@ -5,6 +5,7 @@ export interface IReceipt extends Document {
     eventId: ObjectId;
     userId: ObjectId;
     ticketId: ObjectId;
+    paymentId: ObjectId;
     quantity: Number;
     date: Date;
     status: String;
@@ -24,6 +25,11 @@ const ReceiptSchema: Schema = new Schema({
     ticketId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ticket",
+        required: true
+    },
+    paymentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "payment",
         required: true
     },
     quantity: { type: Number, required: true },

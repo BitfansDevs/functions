@@ -46,6 +46,11 @@ export class EventsRepository {
                         }
                     ]
                 }
+            },
+            {
+                $sort: {
+                    "priority": 1
+                }
             }
         ]);
     }

@@ -9,6 +9,7 @@ export interface IEventDetails extends Document {
     nftImageUrl: String;
     imageUrl: [String];
     tickets: [ObjectId];
+    limitByPerson: Number;
     payment: [ObjectId];
     socialNetworks: [Object];
     termsAndConditions: String;
@@ -42,6 +43,7 @@ const EventDetailsSchema: Schema = new Schema({
             ref: 'payment'
         }], required: true
     },
+    limitByPerson: { type: Number, required: true },
     socialNetworks: { type: [Object], required: true },
     termsAndConditions: { type: String, required: true },
     openDoorsTime: { type: String, required: true },
