@@ -5,21 +5,39 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     const receiptController = new ReceiptController();
     let result: any;
-    const HEADERS = {'Content-Type': 'application/json'}
+    const HEADERS = { 'Content-Type': 'application/json' }
     try {
-        result = await receiptController.createReceipt(req.body);
-        result.statusCode = 200;
+
+        let tickets = req.body.tickets;
+        let receipts = [];
+        let { eventId, userId, paymentId, status } = req.body;
         
+        tickets.forEach(ticket => {
+            let receipt = {
+                eventId,
+                userId,
+                paymentId,
+                ticketId: ticket.ticketId,
+                quantity: ticket.quantity,
+                price: ticket.price,
+                status
+            }
+            receipts.push(receipt);
+        });
+
+        result = receiptController.createReceipt(receipts);
+        result.statusCode = 200;
+
         context.res = {
             body: result,
             headers: HEADERS
         };
-        
-    } catch(ex) {
+
+    } catch (ex) {
         console.log("Exception occurred while logging in --> ", ex);
         context.res = {
             status: 500,
-            body: {message: ex.message},
+            body: { message: ex.message },
             headers: HEADERS
         };
     }

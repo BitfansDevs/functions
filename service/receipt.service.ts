@@ -8,8 +8,12 @@ export class ReceiptService {
         this.receiptRepository = new ReceiptRepository();
     }
 
-    public async createReceipt(receipt: any) {
-        return await this.receiptRepository.createReceipt(receipt);
+    public async createReceipt(receipts: any) {
+        return await this.receiptRepository.createReceipt(receipts);
+    }
+
+    public async findReceiptById(id : string) {
+        return await this.receiptRepository.findReceiptById(id);
     }
 
     public async findReceiptByUserIdAndStatus(uid : string, status: string) {
