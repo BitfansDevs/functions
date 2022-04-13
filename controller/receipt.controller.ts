@@ -19,4 +19,8 @@ export class ReceiptController {
     public async findReceiptByUserIdAndStatus(uid: string, status: string) {
         return await this.receiptService.findReceiptByUserIdAndStatus(uid, status);
     }
+
+    public async updateStatusReceiptById(id: string, status: string) {
+        return await this.receiptService.updateStatusReceiptById(id, status);
+    }
 }

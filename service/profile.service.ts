@@ -12,4 +12,8 @@ export class ProfileService {
         return await this.userRepository.findUserById(uid);
     }
 
+    public async findProfileAdminById(uid : string) {
+        return await this.userRepository.findProfileAdminById(uid);
+    }
+
 }

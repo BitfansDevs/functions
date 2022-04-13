@@ -10,19 +10,20 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
         let tickets = req.body.tickets;
         let receipts = [];
-        let { eventId, userId, paymentId, status } = req.body;
+        let { eventId, uid, paymentId, status } = req.body;
         
         tickets.forEach(ticket => {
-            let receipt = {
-                eventId,
-                userId,
-                paymentId,
-                ticketId: ticket.ticketId,
-                quantity: ticket.quantity,
-                price: ticket.price,
-                status
+            for (let i = 0; i < ticket.quantity; i++) {
+                let receipt = {
+                    eventId,
+                    uid,
+                    paymentId,
+                    date: Date.now(),
+                    ticketId: ticket.ticketId,
+                    status
+                }
+                receipts.push(receipt);
             }
-            receipts.push(receipt);
         });
 
         result = receiptController.createReceipt(receipts);

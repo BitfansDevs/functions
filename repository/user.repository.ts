@@ -17,4 +17,8 @@ export class UserRepository {
         return await UserModel.find({ uid: uid });
     }
 
+    async findProfileAdminById(uid: string): Promise<any> {
+        return await UserModel.find({ uid: uid, role: "ADMIN" });
+    }
+
 }

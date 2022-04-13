@@ -9,7 +9,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const HEADERS = {'Content-Type': 'application/json'}
     try {
         result = await singupController.findUserById(req.body.uid);
-        if(result != null) {
+        context.log(result);
+        if(result && result.length > 0) {
             context.res = {
                 status: 400,
                 body: {message: USER_EXISTS},

@@ -7,6 +7,7 @@ export interface IEvent extends Document {
     title: String;
     description: String;
     categoryId: ObjectId;
+    uid: String;
     priority: Number;
 }
 
@@ -20,6 +21,7 @@ const EventSchema: Schema = new Schema({
         ref: "category",
         required: true
     },
+    uid: { type: String, required: true },
     priority: { type: Number, required: true }
 });
 

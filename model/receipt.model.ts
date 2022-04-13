@@ -3,10 +3,9 @@ import { model, Schema, Model, Document, ObjectId } from 'mongoose';
 
 export interface IReceipt extends Document {
     eventId: ObjectId;
-    userId: ObjectId;
+    uid: String;
     ticketId: ObjectId;
     paymentId: ObjectId;
-    quantity: Number;
     date: Date;
     status: String;
 }
@@ -17,11 +16,7 @@ const ReceiptSchema: Schema = new Schema({
         ref: "event",
         required: true
     },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-        required: true
-    },
+    uid: { type: String, required: true },
     ticketId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ticket",
@@ -32,7 +27,6 @@ const ReceiptSchema: Schema = new Schema({
         ref: "payment",
         required: true
     },
-    quantity: { type: Number, required: true },
     date: { type: Date, required: true, default: Date.now },
     status: { type: String, required: true }
 });

@@ -24,4 +24,14 @@ export class EventsService {
         return await this.eventsRepository.listEventsByCategoryAndTitle(category, title);
     }
 
+    public async listEventsByUserAdmin(uid: string, query: any) {
+        let { category, title } = query;
+        if (!category)
+            category = "";
+        if (!title)
+            title = "";
+
+        return await this.eventsRepository.listEventsByCategoryAndTitleByUserAdmin(uid, category, title);
+    }
+
 }

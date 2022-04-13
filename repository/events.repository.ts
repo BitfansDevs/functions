@@ -55,4 +55,49 @@ export class EventsRepository {
         ]);
     }
 
+    async listEventsByCategoryAndTitleByUserAdmin(uid: string, category: string, title: string): Promise<any> {
+
+        return await EventsModel.aggregate([
+            {
+                $lookup: {
+                    from: "categories",
+                    localField: "categoryId",
+                    foreignField: "_id",
+                    as: "category"
+                }
+            },
+            {
+                $project: {
+                    "categoryId": 0
+                }
+            },
+            {
+                $match: {
+                    $and: [
+                        {
+                            "category.category": {
+                                $regex: category,
+                                $options: 'i'
+                            }
+                        },
+                        {
+                            "title": {
+                                $regex: title,
+                                $options: 'i'
+                            }
+                        },
+                        {
+                            "uid": uid
+                        }
+                    ]
+                }
+            },
+            {
+                $sort: {
+                    "priority": 1
+                }
+            }
+        ]);
+    }
+
 }

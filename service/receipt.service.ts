@@ -12,12 +12,16 @@ export class ReceiptService {
         return await this.receiptRepository.createReceipt(receipts);
     }
 
-    public async findReceiptById(id : string) {
+    public async findReceiptById(id: string) {
         return await this.receiptRepository.findReceiptById(id);
     }
-
-    public async findReceiptByUserIdAndStatus(uid : string, status: string) {
+    
+    public async findReceiptByUserIdAndStatus(uid: string, status: string) {
         return await this.receiptRepository.findReceiptByUserIdAndStatus(uid, status);
+    }
+
+    public async updateStatusReceiptById(id: string, status: string) {
+        return await this.receiptRepository.updateStatusReceiptById(id, status);
     }
 
 }

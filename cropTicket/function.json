@@ -5,9 +5,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "events",
+      "route": "receipt/{uid}/{id}",
       "methods": [
-        "get"
+        "post"
       ]
     },
     {
@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/getEvents/index.js"
+  "scriptFile": "../dist/cropTicket/index.js"
 }

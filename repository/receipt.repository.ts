@@ -10,7 +10,7 @@ export class ReceiptRepository {
     }
 
     async createReceipt(receipts: any): Promise<any> {
-        return await ReceiptModel.collection.insertMany(receipts, {}, (err, docs) => {});
+        return await ReceiptModel.collection.insertMany(receipts, {}, (err, docs) => { });
     }
 
     async findReceiptById(id: string): Promise<any> {
@@ -19,8 +19,11 @@ export class ReceiptRepository {
     }
 
     async findReceiptByUserIdAndStatus(uid: string, status: string): Promise<any> {
-        return await ReceiptModel.find({ uid: uid, status: status }).populate({ path: 'eventId' })
+        return await ReceiptModel.find({ $and: [{ uid: uid }, { status: status }] }).populate({ path: 'eventId' })
             .populate({ path: 'ticketId', select: 'type price currency' }).populate({ path: 'paymentId', select: 'type number description' });
     }
 
+    async updateStatusReceiptById(id: string, status: string): Promise<any> {
+        return await ReceiptModel.findByIdAndUpdate(id, { status });
+    }
 }
