@@ -43,6 +43,9 @@ export class EventsRepository {
                                 $regex: title,
                                 $options: 'i'
                             }
+                        },
+                        {
+                            "available": true
                         }
                     ]
                 }
@@ -88,6 +91,9 @@ export class EventsRepository {
                         },
                         {
                             "uid": uid
+                        },
+                        {
+                            "available": true
                         }
                     ]
                 }

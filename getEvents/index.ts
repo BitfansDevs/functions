@@ -12,7 +12,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         let { uid } = req.query;
         context.log(req.query)
         if (uid) {
-            context.log("dentro")
             let user = await profileController.findProfileAdminById(uid);
             if (user.length > 0 && user[0].role == "ADMIN") {
                 result = await eventsController.listEventsByUserAdmin(uid, req.query)

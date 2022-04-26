@@ -9,6 +9,7 @@ export interface IEvent extends Document {
     categoryId: ObjectId;
     uid: String;
     priority: Number;
+    available: Boolean;
 }
 
 const EventSchema: Schema = new Schema({
@@ -22,7 +23,8 @@ const EventSchema: Schema = new Schema({
         required: true
     },
     uid: { type: String, required: true },
-    priority: { type: Number, required: true }
+    priority: { type: Number, required: true },
+    available: { type: Boolean }
 });
 
 export const EventsModel: Model<IEvent> = model<IEvent>('event', EventSchema);
