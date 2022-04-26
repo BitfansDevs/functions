@@ -7,6 +7,7 @@ export interface ITicket extends Document {
     price: Number;
     currency: String;
     limit: Number;
+    description: String;
     available: Number;
 }
 
@@ -16,6 +17,7 @@ const TicketSchema: Schema = new Schema({
     price: { type: Number, required: true },
     currency: { type: String, required: true },
     limit: { type: Number, required: true },
+    description: { type: String, required: true },
     available: { type: Number, required: true }
 });
 

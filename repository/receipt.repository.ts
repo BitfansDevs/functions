@@ -15,12 +15,12 @@ export class ReceiptRepository {
 
     async findReceiptById(id: string): Promise<any> {
         return await ReceiptModel.findById(id).populate({ path: 'eventId' })
-            .populate({ path: 'ticketId', select: 'type price currency' }).populate({ path: 'paymentId', select: 'type number description' });
+            .populate({ path: 'ticketId', select: 'type price currency description' }).populate({ path: 'paymentId', select: 'type number description' });
     }
 
     async findReceiptByUserIdAndStatus(uid: string, status: string): Promise<any> {
         return await ReceiptModel.find({ $and: [{ uid: uid }, { status: status }] }).populate({ path: 'eventId' })
-            .populate({ path: 'ticketId', select: 'type price currency' }).populate({ path: 'paymentId', select: 'type number description' });
+            .populate({ path: 'ticketId', select: 'type price currency description' }).populate({ path: 'paymentId', select: 'type number description' });
     }
 
     async updateStatusReceiptById(id: string, status: string): Promise<any> {
